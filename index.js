@@ -19,7 +19,7 @@ bot.on('message', async (event) => {
   if (event.message.type === 'text') {
     if (event.message.text.startsWith('!name')) {
       name(event)
-    } else if (event.message.text.startsWith('!flex')) {
+    } else if (event.message.text.startsWith('找車位')) {
       flex(event)
     }
   }
