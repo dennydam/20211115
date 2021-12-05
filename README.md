@@ -9,8 +9,6 @@
 # 台北市停車場機器人使用方式
 <h2> 第一種方式:
  查詢台北市地區 "找車位" + "地區"
- 
-  
   
  <img width="500" height="800" src="https://github.com/dennydam/lineparking/blob/master/lineimage/lineparkpic1.jpg"/>
   
