@@ -2,7 +2,7 @@ import template from '../template/flex.js'
 import axios from 'axios'
 
 export default async (event) => {
-  const flexregion = event.message.text.replace('!flex', '')
+  const flexregion = event.message.text.replace('找車位', '')
   try {
     const results = []
     const results777 = []
@@ -18,10 +18,10 @@ export default async (event) => {
 
         })
 
-        if (results.length >= 5) {
+        if (results.length >= 6) {
           const flex = JSON.parse(JSON.stringify(template))
           flex.altText = '哈囉'
-          for (let i = 0; i < 5; i++) {
+          for (let i = 0; i < 6; i++) {
             flex.contents.contents[i].body.contents[0].text = results[i].title
             flex.contents.contents[i].body.action.text = '!name' + results[i].title
 
