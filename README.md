@@ -2,9 +2,8 @@
 # lineid 加好友
 <h4>lineid:@474acgaa
   
-  
-  ![image](https://github.com/dennydam/lineparking/blob/master/lineimage/lineQRcode.png "image")
-  
+   ![image](https://github.com/dennydam/lineparking/blob/master/lineimage/lineQRcode.png "image")
+ 
   
 
 # 台北市停車場機器人使用方式
