@@ -8,29 +8,20 @@ const bot = linebot({
   channelId: process.env.CHANNEL_ID,
   channelSecret: process.env.CHANNEL_SECRET,
   channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
-
 })
 
 bot.listen('/', process.env.PORT || 3000, () => {
   console.log('機器人啟動666')
 })
 
-bot.on('message', async (event) => {
+bot.on('message', (event) => {
   if (event.message.type === 'text') {
     if (event.message.text.startsWith('!name')) {
       name(event)
     } else if (event.message.text.startsWith('找車位')) {
       flex(event)
     }
-  }
-  if (event.message.type === 'location') {
-    if (event.message.type === 'location') {
-      // console.log(666)
-      // console.log(event.message.latitude)
-      // console.log(event.message.longitude)
-      near(event)
-      // console.log(distance(event.message.latitude, event.message.longitude, 25, 121) * 1.609344)
-      // near()
-    }
+  } else if (event.message.type === 'location') {
+    near(event)
   }
 })
