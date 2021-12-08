@@ -3,47 +3,115 @@ import axios from 'axios'
 
 export default async (event) => {
   const flexregion = event.message.text.replace('找車位', '')
+  const flex = JSON.parse(JSON.stringify(template))
+  let index = 0
+
   try {
-    const results = []
-    const results777 = []
     const { data } = await axios.get('https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_alldesc.json')
     for (const info of data.data.park) {
       if (info.area === flexregion) {
-        results.push({
-          type: 'location',
-          title: info.name,
-          address: info.address,
-          latitude: info.EntranceCoord.EntrancecoordInfo[0].Xcod,
-          longitude: info.EntranceCoord.EntrancecoordInfo[0].Ycod
-
-        })
-
-        if (results.length >= 6) {
-          const flex = JSON.parse(JSON.stringify(template))
-          flex.altText = '哈囉'
-          for (let i = 0; i < 6; i++) {
-            flex.contents.contents[i].body.contents[0].text = results[i].title
-            flex.contents.contents[i].body.action.text = '!name' + results[i].title
-
-            flex.contents.contents[i].body.contents[2].contents[0].contents[0].text = results[i].address
-
-            flex.contents.contents[i].hero.url = 'https://media.istockphoto.com/photos/empty-parking-garage-in-hospital-picture-id1219730178?k=20&m=1219730178&s=612x612&w=0&h=3XCdGM52zWDA-RtqjEmI8p9t0QXn5OGhqLnpBvSnCEI='
+        if (index > 5) break
+        flex.contents.contents.push({
+          type: 'bubble',
+          size: 'micro',
+          hero: {
+            type: 'image',
+            url: 'https://media.istockphoto.com/photos/empty-parking-garage-in-hospital-picture-id1219730178?k=20&m=1219730178&s=612x612&w=0&h=3XCdGM52zWDA-RtqjEmI8p9t0QXn5OGhqLnpBvSnCEI=',
+            size: 'full',
+            aspectMode: 'cover',
+            aspectRatio: '320:213'
+          },
+          body: {
+            type: 'box',
+            layout: 'vertical',
+            contents: [
+              {
+                type: 'text',
+                text: info.name,
+                weight: 'bold',
+                size: 'sm',
+                wrap: true
+              },
+              {
+                type: 'box',
+                layout: 'baseline',
+                contents: [
+                  {
+                    type: 'icon',
+                    size: 'xs',
+                    url: 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png'
+                  },
+                  {
+                    type: 'icon',
+                    size: 'xs',
+                    url: 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png'
+                  },
+                  {
+                    type: 'icon',
+                    size: 'xs',
+                    url: 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png'
+                  },
+                  {
+                    type: 'icon',
+                    size: 'xs',
+                    url: 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png'
+                  },
+                  {
+                    type: 'icon',
+                    size: 'xs',
+                    url: 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png'
+                  },
+                  {
+                    type: 'text',
+                    text: '4.0',
+                    size: 'xs',
+                    color: '#8c8c8c',
+                    margin: 'md',
+                    flex: 0
+                  }
+                ]
+              },
+              {
+                type: 'box',
+                layout: 'vertical',
+                contents: [
+                  {
+                    type: 'box',
+                    layout: 'baseline',
+                    spacing: 'sm',
+                    contents: [
+                      {
+                        type: 'text',
+                        text: info.address,
+                        wrap: true,
+                        color: '#8c8c8c',
+                        size: 'xs',
+                        flex: 5
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            spacing: 'sm',
+            paddingAll: '13px',
+            action: {
+              type: 'message',
+              label: 'action',
+              text: '666'
+            }
           }
-          results777.push(flex)
-          break
-        }
+        })
+        index++
       }
     }
 
-    console.log(results)
-    if (results.length > 0) {
-      event.reply(results777)
+    if (index > 0) {
+      event.reply(flex)
     } else {
-      event.reply('找不到')
+      event.reply('找不到資料')
     }
   } catch (error) {
-    event.reply('錯誤')
+    console.log(error)
   }
 }
-// flex.altText = '哈囉'
-// event.reply(flex)
