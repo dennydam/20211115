@@ -3,6 +3,7 @@ import linebot from 'linebot'
 import name from './commands/name.js'
 import flex from './commands/flex.js'
 import near from './near.js'
+import space from './commands/space.js'
 
 const bot = linebot({
   channelId: process.env.CHANNEL_ID,
@@ -20,6 +21,8 @@ bot.on('message', (event) => {
       name(event)
     } else if (event.message.text.startsWith('找車位')) {
       flex(event)
+    } else if (event.message.text.startsWith('剩餘')) {
+      space(event)
     }
   } else if (event.message.type === 'location') {
     near(event)

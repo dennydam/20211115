@@ -11,18 +11,23 @@ export default async (event) => {
         // idreplies.push(info.id)
         replies.push({
           type: 'location',
-          title: info.name,
+          title: info.name + info.id,
           address: info.address,
           latitude: info.EntranceCoord.EntrancecoordInfo[0].Xcod,
           longitude: info.EntranceCoord.EntrancecoordInfo[0].Ycod
         })
         if (replies.length >= 5) {
           break
-        }
-        event.reply(replies)
-        // console.log(idreplies)
+        } // console.log(idreplies)
       }
-    } event.reply('找不到')
+    }
+    console.log(replies)
+
+    if (replies.length > 0) {
+      event.reply(replies)
+    } else {
+      event.reply('找不到')
+    }
   } catch (error) {
     event.reply('錯誤')
   }

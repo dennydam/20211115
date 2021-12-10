@@ -10,7 +10,7 @@ export default async (event) => {
     const { data } = await axios.get('https://tcgbusfs.blob.core.windows.net/blobtcmsv/TCMSV_alldesc.json')
     for (const info of data.data.park) {
       if (info.area === flexregion) {
-        if (index > 5) break
+        if (index > 7) break
         flex.contents.contents.push({
           type: 'bubble',
           size: 'micro',
@@ -98,7 +98,7 @@ export default async (event) => {
             action: {
               type: 'message',
               label: 'action',
-              text: '666'
+              text: '!name' + info.name
             }
           }
         })
