@@ -2,6 +2,8 @@
 # lineid 加好友
 <h4>lineid:@474acgaa
   
+  
+  
    ![image](https://github.com/dennydam/lineparking/blob/master/lineimage/lineQRcode.png "image")
  
   
