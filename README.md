@@ -3,7 +3,7 @@
 <h4>lineid:@474acgaa
   
   
-  
+
    ![image](https://github.com/dennydam/lineparking/blob/master/lineimage/lineQRcode.png "image")
  
   
@@ -12,7 +12,8 @@
 <h2> 第一種方式:
  查詢台北市地區 "找車位" + "地區"
   
- <img width="500" height="800" src="https://github.com/dennydam/lineparking/blob/master/lineimage/lineparkpic2.jpg"/>
+  
+ <img width="300" height="500" src="https://github.com/dennydam/lineparking/blob/master/lineimage/lineparkpic2.jpg"/>
   
   
   
