@@ -18,7 +18,7 @@
   
   
 <h2> 第二種方式:
- 使用LINE"位置訊息"搜尋您附近的車位
+ 使用LINE"位置訊息"搜尋您附近的車位 點擊下圖紅色框框即可顯示停車場位置地圖
 
 <img width="500" height="800" src="https://github.com/dennydam/lineparking/blob/master/lineimage/S__7225496.jpg"/>
   
