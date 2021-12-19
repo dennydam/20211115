@@ -9,7 +9,7 @@ export default async (event) => {
     for (const info of data.data.park) {
       if (info.id === space) {
         // idreplies.push(info.id)
-        replys.push(info.availablebus
+        replys.push(info.availablemotor
         )
         if (replys.length >= 5) {
           break
@@ -19,6 +19,7 @@ export default async (event) => {
     console.log(replys)
     if (replys.length > 0) {
       event.reply(replys)
+      console.log(replys)
     } else {
       event.reply('找不到')
     }
